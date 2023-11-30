@@ -6,6 +6,10 @@
 {% include "weather_app/main/main_css.html" %}
 {% endblock css %}
 
+{% block icon %}
+<link rel="icon" href="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png" type="image/png">
+{% endblock icon %}
+
 {% block content %}
 <form method="GET">
     <label for="city">What's the weather in </label>
