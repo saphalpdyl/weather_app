@@ -1,0 +1,46 @@
+body {
+    /* Dimensions and Display */
+    height: 100vh;
+    flex-direction: column;
+    gap: 5rem;
+
+    /* Colors and Fonts */
+    background-color: #101010;
+    color : white;
+    font-family: 'VT323', monospace;
+}
+
+body , form {
+    /* Dimensions and Display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    /* Colors and Fonts */
+    font-size: 48px;
+    gap: 2rem;
+}
+
+#city {
+    /* Dimensions and Display */
+    outline: 0;
+    border: 0;
+    width: 30%;
+    border-bottom: 2px solid #ffffff06;
+
+    /* Colors and Fonts */
+    background-color: transparent;
+    color: rgb(55,153,255);
+    text-shadow: 0 0 7px rgba(55,153,255,0.5);
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+}
+
+img {
+    height : 300px;
+    aspect-ratio: 1/1;
+    filter: drop-shadow(0 0 6px #3280B5);
+}

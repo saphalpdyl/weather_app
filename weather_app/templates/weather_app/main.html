@@ -1,0 +1,38 @@
+{% extends 'weather_app/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css\main.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+<div id="weather-card">
+    <img src="http://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="{{description}}">
+    <span id="temperature">{{temp}}<sup>°C</sup></span>
+    <!-- <span id="desc">{{description}}</span> -->
+    <div id="info-wrapper">
+        <div id="wind-wrapper">
+            <div id="compass-img-wrapper">
+                <img class="icon" src="{% static '\images\wind_icon.png' %}" alt="Wind icon">
+            </div>
+            <div id="wind-info-wrapper">
+                <span id="wind-info-speed">{{wind.speed}} m/s</span>
+                <span id="wind-info-direction">{{wind.deg}}° from N</span>
+            </div>
+        </div>
+        <div id="humidity-wrapper">
+            <div id="humidity-info-wrapper">
+                <span id="humidity-info">{{humidity}}</span>
+            </div>
+            <div id="humidity-icon-wrapper">
+                <img class="icon" src="{% static '\images\humidity_icon.png' %}" alt="humidity icon ">
+            </div>
+        </div>
+    </div>
+</div>
+
+{{aqi}}
+
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'weather_app/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '\css\search.css' %}">
+{% endblock css %}
+
+{% block content %}
+<form method="GET">
+    <label for="city">What's the weather in </label>
+    <input autofocus type="text" name="city" id="city">
+    <label for="city">?</label>
+</form>
+{% endblock content %}

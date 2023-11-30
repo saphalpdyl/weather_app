@@ -1,0 +1,6 @@
+.env
+env/
+.vs
+db.sqlite3
+obj/**
+static/**

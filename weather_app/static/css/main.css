@@ -1,0 +1,80 @@
+:root {
+    --icon-size : 32px;
+}
+
+body {
+    /* Dimensions and Display */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* Colors and Fonts */
+    background-color: #101010;
+    color : white;
+    font-family: 'Poppins', sans-serif;
+}
+
+#weather-card {
+    /* Dimensions and Display */
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 3rem;
+    padding-bottom: 2rem;
+
+    /* Colors and Fonts */
+    box-shadow:   8px 8px 17px #0d0d0d,
+    -8px -8px 17px #131313;
+}
+
+#temperature {
+    /* Colors and Fonts */
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 82px;
+    color: rgb(55,153,255);
+    text-shadow: 0 0 7px rgba(55,153,255,0.5);
+}
+
+#temperature > sup {
+    /* Colors and Fonts */
+    font-family: 'Inter';
+    font-size: 60px;
+    color: #ffffff16;
+    text-shadow: none;
+}
+
+#info-wrapper,#wind-wrapper,#humidity-wrapper {
+    /* Dimensions and Display */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    
+    /* Colors and Fonts */
+    border: 1px solid red;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+#info-wrapper {
+    /* Dimensions and Display */
+    justify-content: space-between;
+    width: 100%;
+}
+
+#wind-info-wrapper, #humidity-info-wrapper {
+    /* Dimensions and Display */
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    filter: invert(1);
+    height: var(--icon-size);
+    width: var(--icon-size);
+}
