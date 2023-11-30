@@ -39,8 +39,6 @@ form {
     text-align: center;
 }
 
-img {
-    height : 300px;
-    aspect-ratio: 1/1;
-    filter: drop-shadow(0 0 6px #3280B5);
+#main-content {
+    width: 100%;
 }

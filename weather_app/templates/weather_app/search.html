@@ -3,12 +3,20 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static '\css\search.css' %}">
+{% include "weather_app/main/main_css.html" %}
 {% endblock css %}
 
 {% block content %}
 <form method="GET">
     <label for="city">What's the weather in </label>
-    <input autofocus type="text" name="city" id="city">
+    <input autofocus type="text" name="city" id="city" value="{{loc}}">
     <label for="city">?</label>
 </form>
+
+{% if is_available %}
+<div id="main-content">
+    {% include "weather_app/main/main_content.html" %}
+</div>    
+{% endif %}
+
 {% endblock content %}

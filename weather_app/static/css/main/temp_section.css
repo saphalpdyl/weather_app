@@ -1,0 +1,48 @@
+#temp-main {
+    display: flex;
+    justify-content: center;
+}
+
+#temp {
+    /* Colors and Fonts */
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 82px;
+    color: rgb(55,153,255);
+    text-shadow: 0 0 7px rgba(55,153,255,0.5);
+    text-align: center;
+}
+
+#temp > #temp-unit {
+    /* Dimensions and Display */
+    position: relative;
+    left: -20px;
+    top: -10px;
+    
+    /* Colors and Fonts */
+    font-family: 'Inter';
+    font-size: 38px;
+    color: #ffffff16;
+    text-shadow: none;
+}
+
+#temp-other {
+    /* Dimensions and Display */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.temp-data {
+    /* Colors and Fonts */
+    font-family: 'Poppins', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff5;
+}
+
+.temp-detail {
+    display: flex;
+    flex-direction: column;
+}

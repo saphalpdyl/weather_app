@@ -1,0 +1,27 @@
+#weather-icon {
+    height: var(--weather-icon-size);
+    width: var(--weather-icon-size);
+}
+
+#img-wrapper {
+    /* Dimensions and Display */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    right: -20px;
+}
+
+#weather-desc {
+    /* Dimensions and Display */
+    position: relative;
+    top: -4rem;
+    
+    /* Colors and Fonts */
+    text-transform: capitalize;
+    font-family: 'Poppins', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #ffffff1e;
+}

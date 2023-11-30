@@ -1,0 +1,93 @@
+{% load static %}
+
+<div id="main-content-wrapper">
+    <div id="img-wrapper">
+        <img id="weather-icon" src="http://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="{{description}}">
+        <span id="weather-desc" >{{description}}</span>
+    </div>
+    
+    
+    <div id="temp-wrapper">
+        <div id="temp-main">
+            <span id="temp">
+                {{temp}}
+                <sup id="temp-unit">
+                    °C  
+                </sup>
+            </span>
+        </div>
+        <div id="temp-other">
+            <div class="temp-detail" id="temp-min">
+                <span class="info-title">TEMP MIN</span>
+                <span class="temp-data"  id="temp-min-data">{{temp_data.temp_min}}</span>
+            </div>
+            <div class="temp-detail" id="temp-max">
+                <span class="info-title">TEMP MAX</span>
+                <span class="temp-data" id="temp-max-data">{{temp_data.temp_max}}</span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="other-wrapper">
+        <!-- Pressure -->
+        <div id="pressure-section">
+            <span class="info-title">PRESSURE</span>
+            <div id="pressure-wrapper">
+                <div id="pressure-icon-wrapper">
+                    <img class="icon" src="{% static '\images\air_pressure_icon.png' %}" alt="pressure icon ">
+                </div>
+                <div id="pressure-info-wrapper">
+                    <span id="pressure-info">{{temp_data.pressure}} hPa</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Humidity -->
+        <div id="humidity-section">
+            <span class="info-title">HUMIDITY</span>
+            <div id="humidity-wrapper">
+                <div id="humidity-icon-wrapper">
+                    <img class="icon" src="{% static '\images\humidity_icon.png' %}" alt="humidity icon ">
+                </div>
+                <div id="humidity-info-wrapper">
+                    <span id="humidity-info">{{temp_data.humidity}} %</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Wind -->
+        <div id="wind-section">
+            <span class="info-title">WIND</span>
+            <div id="wind-wrapper">
+                <div id="wind-icon-wrapper">
+                    <img class="icon" src="{% static '\images\wind_icon.png' %}" alt="Wind icon">
+                </div>
+                <div id="wind-info-wrapper">
+                    <span id="wind-info-speed">{{wind.speed}} m/s</span>
+                    <span id="wind-info-direction">{{wind.deg}}° from N</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Air quality -->
+        <div id="aqi-section">
+            <span class="info-title">AQI</span>
+            <div id="aqi-wrapper">
+                <div id="aqi-icon-wrapper">
+                    <img class="icon" src="{% static '\images\air_quality_icon.png' %}" alt="AQI icon">
+                </div>
+                <div id="aqi-info-wrapper">
+                    <span id="aqi-info" 
+                        data-aqi-red="{{aqi_colors.red}}"
+                        data-aqi-blue="{{aqi_colors.blue}}"
+                        data-aqi-green="{{aqi_colors.green}}"
+                    
+                    >{{aqi}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static '\js\aqi.js' %}"></script>
