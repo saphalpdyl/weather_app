@@ -21,4 +21,4 @@ python3 manage.py runserver
 ```
 
 ## License
-This project is under MIT license.
+This project is under this [MIT license](/LICENSE).
