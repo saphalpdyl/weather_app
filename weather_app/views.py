@@ -2,14 +2,16 @@ import os
 import requests
 import json
 
-from django.urls import reverse_lazy
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import redirect, render
+from django.http import HttpRequest
+from django.shortcuts import render
 from django.views import View
 
 class MainView(View) : 
     def get(self, request: HttpRequest) :
         city_name = request.GET.get('city', None)
+        context = {
+            "is_available" : False
+        }
 
         if city_name :
             weather_api_key = os.environ.get('WEATHER_API_KEY')
@@ -17,17 +19,14 @@ class MainView(View) :
             url = f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={weather_api_key}&units=Metric'
             weather_response = requests.get(url).json()
 
-            context = {}
-            
             if weather_response['cod'] == 200 : 
-                temp = round(weather_response['main']['temp'])  
+                temp = round(weather_response['main']['temp'])
+                temp_data = weather_response['main']
                 weather = weather_response['weather']
                 coords = weather_response['coord']
                 wind = weather_response['wind']
-                humidity = weather_response['main']['humidity']
             
                 description = weather_response['weather'][0]['description']
-                print(coords['lat'])
 
                 # Sending Http POST request for air quality index to Google Maps API
                 maps_api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
@@ -38,23 +37,37 @@ class MainView(View) :
                         "latitude" : coords['lat']
                     }
                 }
-                # air_quality_response = requests.post(url, data=json.dumps(maps_params)).json()
-                
+                air_quality_response = requests.post(url, data=json.dumps(maps_params)).json()
+                aqi_exists = False
+                aqi_colors = {}
+
+                if air_quality_response.get('error') :
+                    aqi = "Not Available"
+                else :
+                    aqi = air_quality_response['indexes'][0]['aqiDisplay']
+                    aqi_colors_unadjusted = air_quality_response['indexes'][0]['color']
+                    aqi_red = aqi_colors_unadjusted.get('red',0) * 255
+                    aqi_blue = aqi_colors_unadjusted.get('blue',0) * 255
+                    aqi_green = aqi_colors_unadjusted.get('green',0) * 255
+                    aqi_colors = {
+                        "red" : aqi_red,
+                        "blue" : aqi_blue,
+                        "green" : aqi_green,
+                    }
+                    aqi_exists = True
 
                 context = {
+                    "is_available" : True,
                     "temp" : temp,
+                    "temp_data" : temp_data,
                     "weather" : weather[0] ,
                     "description" : description,
                     "coords" : coords,
                     "wind" : wind,
-                    "humidity" : humidity,
-                    # "aqi" : air_quality_response['indexes'][0]
-
+                    "aqi" : aqi,
+                    "loc" : city_name,
+                    "aqi_exists" : aqi_exists,
+                    "aqi_colors" : aqi_colors
                 }
-            else :
-                return redirect(reverse_lazy('main'))
 
-            return render(request, 'weather_app/main.html', context)
-        else : 
-            return render(request, 'weather_app/search.html')
-        
+        return render(request, 'weather_app/search.html', context)
