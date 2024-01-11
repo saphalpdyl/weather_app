@@ -4,7 +4,6 @@
 }
 
 #temp {
-    /* Colors and Fonts */
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 82px;
@@ -14,12 +13,10 @@
 }
 
 #temp > #temp-unit {
-    /* Dimensions and Display */
     position: relative;
     left: -20px;
     top: -10px;
     
-    /* Colors and Fonts */
     font-family: 'Inter';
     font-size: 38px;
     color: #ffffff16;
@@ -27,14 +24,12 @@
 }
 
 #temp-other {
-    /* Dimensions and Display */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
 .temp-data {
-    /* Colors and Fonts */
     font-family: 'Poppins', monospace;
     font-size: 20px;
     font-weight: 600;

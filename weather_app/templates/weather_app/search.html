@@ -4,6 +4,18 @@
 {% block css %}
 <link rel="stylesheet" href="{% static '\css\search.css' %}">
 {% include "weather_app/main/main_css.html" %}
+
+<style>
+    p {
+        width: 50%;
+        font-family: 'Poppins';
+        font-weight: 100;
+    }
+
+    p > span {
+        font-weight: 300;
+    }
+</style>
 {% endblock css %}
 
 {% block icon %}
@@ -20,7 +32,16 @@
 {% if is_available %}
 <div id="main-content">
     {% include "weather_app/main/main_content.html" %}
-</div>    
+</div>
+{% else %}
+<p>
+    NOTE: This app was made as a fun experiment to prove if having robust concepts but limited language knowledge is
+    enough to create a simple app in Django. The day this app was made, it had only been 2 weeks since I had started
+    learning django. The app was wrtten without using any sources such as Google, ChatGPT, Bard, W3Schools or any other
+    internet resource. Except for the fonts and images, the app was essentially written offline with mock JSON data for 
+    testing API. Later, the app was integrated with OpenWeatherAPI. <span>Because of the constraints of not having online help,
+    the code written is extremely unconventional and may lead to bugs. Play with caution. 💖</span>
+</p>
 {% endif %}
 
 {% endblock content %}
